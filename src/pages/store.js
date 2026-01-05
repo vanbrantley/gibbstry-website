@@ -16,12 +16,12 @@ export default function Store() {
             link: "/",
             // link: "https://shop.domainname.com/products/tee-two",
         },
-        {
-            name: "G Vertebrae",
-            img: "/vertebrae.png",
-            link: "/",
-            // link: "https://shop.domainname.com/products/tee-three",
-        },
+        // {
+        //     name: "G Vertebrae",
+        //     img: "/vertebrae.png",
+        //     link: "/",
+        //     // link: "https://shop.domainname.com/products/tee-three",
+        // },
     ];
 
     return (
