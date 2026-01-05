@@ -1,13 +1,11 @@
 import Head from "next/head";
-import { Jacquard_12 } from "next/font/google";
-
-const jacquard = Jacquard_12({
-  variable: "--font-jacquard",
-  subsets: ["latin"],
-  weight: "400",
-});
+import { useRouter } from "next/router";
+import Landing from "@/components/Landing";
 
 export default function Home() {
+
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -15,11 +13,7 @@ export default function Home() {
         <meta name="description" content="Gibbstry landing page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex h-screen w-screen items-center justify-center">
-        <p className={`${jacquard.className} text-[64px] sm:text-[96px]`}>
-          Gibbstry
-        </p>
-      </main>
+      <Landing onClick={() => router.push("/store")} />
     </>
   );
 }
