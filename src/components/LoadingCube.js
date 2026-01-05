@@ -39,15 +39,24 @@ export default function CameraRelativeCubeAnimations({ onClick }) {
         const cube = new THREE.Mesh(geometry, faceColors);
         scene.add(cube);
 
-        // === Textures for G ===
+        // === Textures for G (DPR-aware & crisp) ===
         const createTextTexture = (text) => {
             const canvas = document.createElement("canvas");
             const ctx = canvas.getContext("2d");
-            const size = 1024;
 
-            canvas.width = size;
-            canvas.height = size;
+            const dpr = Math.min(window.devicePixelRatio || 1, 2); // device pixel ratio
+            const size = 1024; // logical canvas size
 
+            // Set actual pixel size for high-DPI
+            canvas.width = size * dpr;
+            canvas.height = size * dpr;
+            canvas.style.width = `${size}px`;
+            canvas.style.height = `${size}px`;
+
+            // Scale context so drawing matches logical size
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            // Clear & draw text
             ctx.clearRect(0, 0, size, size);
             ctx.fillStyle = "#ffffff";
             const fontSize = size * 0.5;
@@ -56,10 +65,13 @@ export default function CameraRelativeCubeAnimations({ onClick }) {
             ctx.textBaseline = "middle";
             ctx.fillText(text, size / 2, size / 2);
 
+            // Create texture
             const texture = new THREE.CanvasTexture(canvas);
             texture.minFilter = THREE.LinearFilter;
             texture.magFilter = THREE.LinearFilter;
+            texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
             texture.needsUpdate = true;
+
             return texture;
         };
 
