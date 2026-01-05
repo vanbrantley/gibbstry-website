@@ -37,7 +37,7 @@ export default function Store() {
                 <nav className="fixed top-0 left-0 z-10 flex h-16 w-full items-center px-6">
                     <Link href="/" className="flex items-center">
                         <Image
-                            src="/logo-512x512.svg"
+                            src="/logo-512x512.png"
                             alt="Logo"
                             width={32}
                             height={32}
