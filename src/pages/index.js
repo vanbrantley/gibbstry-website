@@ -1,10 +1,21 @@
 import Head from "next/head";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import Landing from "@/components/Landing";
+import LoadingCube from "@/components/LoadingCube";
 
 export default function Home() {
 
+  const [step, setStep] = useState("brand"); // "brand" | "cube"
   const router = useRouter();
+
+  const handleLandingClick = () => {
+    setStep("cube");
+  };
+
+  const handleCubeClick = () => {
+    router.push("/store");
+  };
 
   return (
     <>
@@ -13,7 +24,10 @@ export default function Home() {
         <meta name="description" content="Gibbstry landing page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Landing onClick={() => router.push("/store")} />
+
+      {step === "brand" && <Landing onClick={handleLandingClick} />}
+      {step === "cube" && <LoadingCube onClick={handleCubeClick} />}
+
     </>
   );
 }
