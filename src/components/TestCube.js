@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-export default function CameraRelativeCubeAnimations({ onClick }) {
+export default function CameraRelativeCubeAnimations() {
     const mountRef = useRef(null);
 
     useEffect(() => {
@@ -43,15 +43,14 @@ export default function CameraRelativeCubeAnimations({ onClick }) {
         const createTextTexture = (text) => {
             const canvas = document.createElement("canvas");
             const ctx = canvas.getContext("2d");
-            const size = 1024;
+            const size = 512;
 
             canvas.width = size;
             canvas.height = size;
 
             ctx.clearRect(0, 0, size, size);
             ctx.fillStyle = "#ffffff";
-            const fontSize = size * 0.5;
-            ctx.font = `bold ${fontSize}px "Jacquard 12", sans-serif`;
+            ctx.font = `bold ${size * 0.5}px "Jacquard 12", sans-serif`;
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
             ctx.fillText(text, size / 2, size / 2);
@@ -228,25 +227,11 @@ export default function CameraRelativeCubeAnimations({ onClick }) {
 
         animate();
 
-        // === Handle Window Resize ===
-        const handleResize = () => {
-            camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-        };
-        window.addEventListener("resize", handleResize);
-
-        // === Cleanup on Unmount ===
         return () => {
-            window.removeEventListener("resize", handleResize);
-            if (renderer) renderer.dispose();
-            if (mountRef.current && renderer.domElement.parentNode === mountRef.current) {
-                mountRef.current.removeChild(renderer.domElement);
-            }
+            renderer.dispose();
+            mountRef.current.removeChild(renderer.domElement);
         };
-
     }, []);
 
-    return <div ref={mountRef} onClick={onClick} style={{ width: "100vw", height: "100vh" }} />;
+    return <div ref={mountRef} style={{ width: "100vw", height: "100vh" }} />;
 }

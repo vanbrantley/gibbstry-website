@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Landing from "@/components/Landing";
 import LoadingCube from "@/components/LoadingCube";
+import TestCube from "@/components/TestCube";
 
 export default function Home() {
 
@@ -27,6 +28,8 @@ export default function Home() {
 
       {step === "brand" && <Landing onClick={handleLandingClick} />}
       {step === "cube" && <LoadingCube onClick={handleCubeClick} />}
+
+      {/* <TestCube /> */}
 
     </>
   );
