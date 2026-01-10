@@ -16,7 +16,7 @@ export default function Product2() {
             ShopifyBuy.UI.onReady(client).then(function (ui) {
                 ui.createComponent('product', {
                     id: '14924597723502',
-                    node: document.getElementById('product-component-1768067969663'),
+                    node: document.getElementById('product-component-1768077403398'),
                     moneyFormat: '%24%7B%7Bamount%7D%7D',
                     options: {
                         "product": {
@@ -143,7 +143,7 @@ export default function Product2() {
         <div className="min-h-screen flex items-center justify-center p-6">
             <div className="w-full max-w-2xl">
                 {/* Replace this line with the top line of the generated code from Shopify Buy Now Button */}
-                <div id='product-component-1768067969663'></div>
+                <div id='product-component-1768077403398'></div>
             </div>
         </div>
     );
