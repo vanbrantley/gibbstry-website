@@ -15,7 +15,7 @@ export default function Home() {
   };
 
   const handleCubeClick = () => {
-    router.push("/store");
+    router.push("/shop");
   };
 
   return (

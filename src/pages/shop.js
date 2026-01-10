@@ -2,19 +2,18 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Store() {
+export default function Shop() {
     const products = [
         {
             name: "Black G Tee",
             img: "/white-on-black.png",
-            link: "/",
-            // link: "https://shop.domainname.com/products/tee-one",
+            link: "/shop/1"
         },
         {
             name: "White G Tee",
             img: "/black-on-white3.png",
-            link: "/",
-            // link: "https://shop.domainname.com/products/tee-two",
+            link: "/shop/2"
+
         },
         // {
         //     name: "G Vertebrae",
@@ -54,7 +53,7 @@ export default function Store() {
                             <a
                                 key={product.name}
                                 href={product.link}
-                                target="_blank"
+                                // target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-full flex justify-center"
                             >
