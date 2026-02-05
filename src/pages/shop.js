@@ -15,12 +15,11 @@ export default function Shop() {
             link: "/shop/2"
 
         },
-        // {
-        //     name: "G Vertebrae",
-        //     img: "/vertebrae.png",
-        //     link: "/",
-        //     // link: "https://shop.domainname.com/products/tee-three",
-        // },
+        {
+            name: "G Spine Tee",
+            img: "/G-vertebrae.png",
+            link: "/shop/3"
+        },
     ];
 
     return (
@@ -85,13 +84,6 @@ export default function Shop() {
                             width={28}
                             height={28}
                         />
-                        {/* <Image
-                            src="/pixel-instagram.png"
-                            alt="Instagram"
-                            width={24}
-                            height={24}
-                            className="opacity-80 hover:opacity-100 transition-opacity"
-                        /> */}
                     </a>
                 </footer>
             </div>
